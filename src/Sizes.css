@@ -1,0 +1,14 @@
+.size-ele:hover{
+  border: 1px solid black;
+}
+.size-ele{
+  border: 1px solid transparent;
+  background-color: #ececec;
+  border-radius: 50%;
+  text-align: center;
+  font-size: .8em;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+  line-height: 35px;
+}

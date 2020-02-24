@@ -1,0 +1,53 @@
+import React, { useState } from 'react';
+import products from './data/products.json';
+import { Grid, Box } from '@material-ui/core';
+import Product from './Product';
+
+let productHash = {};
+//create a service worker to execute this task
+products.products.forEach(product => {
+  product.availableSizes.forEach((size) => {
+    product.count = 0;
+    productHash[size] ? productHash[size].push(product) : productHash[size] = [product];
+  })
+})
+
+//create a service worker to execute this task
+function getProducts(size, filter){
+  let pros = {};
+  for(let item in size){
+    productHash[item].forEach((ele) => {
+      pros[ele.id]=ele;
+    })
+  }
+  if(Object.keys(size).length==0){
+    Object.values(productHash).forEach((product)=> {
+      product.reduce((a, c) => {
+        a[c.id]=c;
+        return a;
+      }, pros)
+    })
+  }
+
+  let products = Object.values(pros).map((ele) => ele);
+  if(filter == 'increase'){
+    products.sort((a, b) => a.price<b.price ? -1 : 0)
+  }else if(filter == 'decrease'){
+    products.sort((a, b) => a.price>b.price ? -1 : 0)
+  }
+  return products.map((product) => (
+    <Grid item xs={3} key={product.id} >
+        <Product product={product} />
+    </Grid>
+  ))
+}
+  
+const Products = ({size, filter}) => {
+  return (
+    <Grid container>
+      {getProducts(size, filter)}
+    </Grid>
+  );
+}
+ 
+export default Products;
