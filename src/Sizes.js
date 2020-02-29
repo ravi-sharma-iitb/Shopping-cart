@@ -11,20 +11,25 @@ const Sizes = ({setSize}) => {
       <Grid container>
         <Grid item xs={12}>
           <Box mb={1}>
-            <Typography variant="subtitle1">
+            <Typography className="size-text" variant="subtitle1">
               <b>
                 Sizes:
               </b>
             </Typography>
           </Box>
         </Grid>
-        {sizes.map((size, index) => (
-          // getSizeEle(size, setSize, index)
-          <SizeEle 
-            size={size}
-            setSize={setSize}
-            key={index}/>
-        ))}
+        <Grid item xs={12}>
+          <Grid container className="sizes-container">
+              {sizes.map((size, index) => (
+                <Grid item>
+                  <SizeEle
+                    size={size}
+                    setSize={setSize}
+                    key={index}/>
+                </Grid>
+              ))}
+          </Grid>
+        </Grid>
       </Grid>
     </Box>
   );

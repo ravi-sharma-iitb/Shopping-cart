@@ -13,7 +13,7 @@ products.products.forEach(product => {
 })
 
 //create a service worker to execute this task
-function getProducts(size, filter){
+function getProducts(size, filter, setOpenCart){
   let pros = {};
   for(let item in size){
     productHash[item].forEach((ele) => {
@@ -36,16 +36,17 @@ function getProducts(size, filter){
     products.sort((a, b) => a.price>b.price ? -1 : 0)
   }
   return products.map((product) => (
-    <Grid item xs={3} key={product.id} >
-        <Product product={product} />
+    <Grid item xs={6} sm={4} md={3} key={product.id}>
+        <Product product={product} setOpenCart={setOpenCart} />
     </Grid>
   ))
 }
   
-const Products = ({size, filter}) => {
+const Products = ({size, filter, setOpenCart}) => {
+  console.log('products rendering');
   return (
     <Grid container>
-      {getProducts(size, filter)}
+      {getProducts(size, filter, setOpenCart)}
     </Grid>
   );
 }

@@ -28,6 +28,7 @@ let quantityStyle = {
 }
 
 const CloseCart = ({productCount, setState}) => {
+  console.log('close cart renderig');
   return ( 
     <div onClick={() => setState(true)} style={closedShoppingcartStyle}>
       <img src={require("../static/bag-icon.png")} alt=""/>

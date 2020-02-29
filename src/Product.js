@@ -12,17 +12,21 @@ const setProducts = (prevProducts, product) => {
     prevProducts[product.id].count=1
     prevProducts[product.id].insertionId = productLength;
   }
+  localStorage.setItem('products', JSON.stringify(prevProducts));
   return {...prevProducts};
 }
 
-const Product = ({product}) => {
+const Product = ({product, setOpenCart}) => {
   const buttonEle = useRef(null);
   const selectProduct = useSelectedProductContext();
   return (
     <Box
       mb={5}
       className="product-hover"
-      onClick={() => selectProduct((prevProducts) => setProducts(prevProducts, product))}>
+      onClick={() => {
+        selectProduct((prevProducts) => setProducts(prevProducts, product))
+        setOpenCart(true);
+      }}>
       <Grid 
         onMouseEnter={() => buttonEle.current.style.backgroundColor="#eabf00"}
         onMouseLeave={() => buttonEle.current.style.backgroundColor="#1b1a20"}

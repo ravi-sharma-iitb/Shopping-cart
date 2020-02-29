@@ -20,7 +20,11 @@ function useGetProductsContext(){
 }
 
 function ShoppingCartContext({children}) {
-  const [products, setProducts] = useState({});
+  let allProducts = {};
+  if(localStorage.getItem("products")){
+    allProducts = JSON.parse(localStorage.getItem("products"));
+  }
+  const [products, setProducts] = useState(allProducts);
   return (
     <SelectProductContext.Provider value={setProducts}>
       <GetProductsContext.Provider value={products}>

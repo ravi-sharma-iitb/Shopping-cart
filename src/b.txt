@@ -1,1 +1,1 @@
-textAlign: "center", backgroundColor: '#0c0b10'
+textAlign: "center", color: "white", lineHeight: '40px'

@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import { Grid } from '@material-ui/core';
 import '../ShoppingCart.css';
-import { useSelectedProductContext, useGetProductsContext }  from '../../ShoppingCartContext';  
+import { useSelectedProductContext }  from '../../ShoppingCartContext';  
 
 const modifyItemQuantity = (products, product, incrementProduct) => {
-  console.log('here');
+  let tempProducts = {...products}
   if(incrementProduct){
-    products[product.id].count++;
+    tempProducts[product.id].count++;
   }else{
-    products[product.id].count !=1 ? products[product.id].count-- : console.log("hello");
+    if(tempProducts[product.id].count != 1){
+      tempProducts[product.id].count--;
+    }
   }
-  console.log(products);
-  return {...products};
+  localStorage.setItem("products", JSON.stringify(tempProducts));
+  return tempProducts;
 }
 
 const ItemQuantityModifier = ({setDeleteButtonHoverClass, product}) => {
+  console.log('ItemQuantityModifier rendering...');
+  console.log('product.count :', product.count);
   const [classes, setClasses] = useState(["delete-button"]);
   const [isDisabled, setIsDisabled] = useState(product.count <= 1 ? true : false);
-  console.log('isDisabled :', isDisabled);
-  console.log('product.count :', product.count);
   useEffect(() => {
     product.count <= 1 ? setIsDisabled(true) : setIsDisabled(false);
   }, [product.count])
   let selectProduct = useSelectedProductContext();
   return (
-    <Grid container spacing={1} style={{position: 'relative'}}>
+    <Grid 
+      container 
+      spacing={1} 
+      style={{position: 'relative'}}>
       <Grid 
         item
         style={{position: 'absolute', right: '5px'}}
@@ -39,6 +44,7 @@ const ItemQuantityModifier = ({setDeleteButtonHoverClass, product}) => {
         }}
         onClick={() => selectProduct((products) => {
           delete products[product.id];
+          localStorage.setItem("products", JSON.stringify(products))
           return {...products};
         })}>
       </Grid>
@@ -64,4 +70,4 @@ const ItemQuantityModifier = ({setDeleteButtonHoverClass, product}) => {
   );
 }
  
-export default ItemQuantityModifier;
+export default React.memo(ItemQuantityModifier);

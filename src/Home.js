@@ -10,6 +10,7 @@ import PriceFilter from './priceFilter';
 const Home = () => {
   const [size, setSize] = useState({});
   const [filter, setFilter] = useState("");
+  const [openCart, setOpenCart] = useState(false);
   console.log('size :', size);
   return ( 
     <>
@@ -19,12 +20,12 @@ const Home = () => {
             <PriceFilter filter={filter} setFilter={setFilter} />
           </Grid>
           <ShoppingCartContext>
-            <Grid item xs={2}>
+            <Grid item xs={12} sm={2}>
               <Sizes setSize={setSize} />
             </Grid>
-            <Grid item xs={10}>
-                <Products filter={filter} size={size} />
-                <ShoppingCart />
+            <Grid item xs={12} sm={10}>
+              <Products filter={filter} size={size} setOpenCart={setOpenCart} />
+              <ShoppingCart open={openCart} setOpenCart={setOpenCart} />
             </Grid>
           </ShoppingCartContext>
         </Grid>

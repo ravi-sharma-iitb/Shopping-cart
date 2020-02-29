@@ -12,3 +12,20 @@
   margin-bottom: 10px;
   line-height: 35px;
 }
+
+@media screen and (max-width: 600px){
+  .sizes-container{
+    display: flex;
+    justify-content: space-evenly
+  }
+  .size-text{
+    text-align: center
+  }
+}
+
+@media screen and (max-width: 870px){
+  .size-container{
+    display: flex;
+    justify-content: space-around
+  }
+}

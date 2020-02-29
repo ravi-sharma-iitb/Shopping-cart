@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Box, Typography } from '@material-ui/core';
 import ItemQuantityModifier from './ItemQuantityModifier';
 
 const CartItem = ({product}) => {
   let [deleteButtonHoverClass, setDeleteButtonHoverClass] = useState([]);
+  useEffect(() => {
+    console.log('cart item rendering');
+  }, [product])
   return (
     <Grid container className={"cart-item-product "+deleteButtonHoverClass.join(" ")}>
         <Grid item xs={12}>
@@ -26,7 +29,7 @@ const CartItem = ({product}) => {
               </Box>
             </Grid>
             <Grid item xs={2}>
-              <ItemQuantityModifier product={product} setDeleteButtonHoverClass={setDeleteButtonHoverClass} />
+              <ItemQuantityModifier product={product} setDeleteButtonHoverClass={() => console.log('hello')} />
             </Grid>
           </Grid>
     </Box>
