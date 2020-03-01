@@ -42,7 +42,7 @@ const getDrawerContent = (productCount, products, setState) => {
                 </Grid>
               </Box>
             </Grid>
-            <Grid item xs={12} style={{height: '100%'}}>
+            <Grid item xs={12}>
               {products.length?  products.map((product) => (
                 <Grid key={product.id} container>
                   <Grid item xs={12}>

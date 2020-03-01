@@ -4,9 +4,6 @@ import ItemQuantityModifier from './ItemQuantityModifier';
 
 const CartItem = ({product}) => {
   let [deleteButtonHoverClass, setDeleteButtonHoverClass] = useState([]);
-  useEffect(() => {
-    console.log('cart item rendering');
-  }, [product])
   return (
     <Grid container className={"cart-item-product "+deleteButtonHoverClass.join(" ")}>
         <Grid item xs={12}>
@@ -29,7 +26,7 @@ const CartItem = ({product}) => {
               </Box>
             </Grid>
             <Grid item xs={2}>
-              <ItemQuantityModifier product={product} setDeleteButtonHoverClass={() => console.log('hello')} />
+              <ItemQuantityModifier product={product} setDeleteButtonHoverClass={setDeleteButtonHoverClass} />
             </Grid>
           </Grid>
     </Box>

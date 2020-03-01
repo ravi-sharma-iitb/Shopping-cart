@@ -17,8 +17,6 @@ const modifyItemQuantity = (products, product, incrementProduct) => {
 }
 
 const ItemQuantityModifier = ({setDeleteButtonHoverClass, product}) => {
-  console.log('ItemQuantityModifier rendering...');
-  console.log('product.count :', product.count);
   const [classes, setClasses] = useState(["delete-button"]);
   const [isDisabled, setIsDisabled] = useState(product.count <= 1 ? true : false);
   useEffect(() => {
