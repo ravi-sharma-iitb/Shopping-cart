@@ -24,6 +24,7 @@ let quantityStyle = {
 }
 
 const getDrawerContent = (productCount, products, setState) => {
+  products.forEach((product) => console.log(product.insertionId))
   return (
     <Grid container>
       <Grid item xs={12} className="shopping-cart">
@@ -42,7 +43,7 @@ const getDrawerContent = (productCount, products, setState) => {
                 </Grid>
               </Box>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} style={{height: `${Math.max(window.outerHeight, (products.length+2)*132)}px`}}>
               {products.length?  products.map((product) => (
                 <Grid key={product.id} container>
                   <Grid item xs={12}>
@@ -51,41 +52,42 @@ const getDrawerContent = (productCount, products, setState) => {
                 </Grid>
               )) : <div className="empty-cart">Add some product in the cart <br/> :)</div>}
             </Grid>
-        </Grid>
-        <Grid
-          style={{
-            color: 'white',
-            position: 'absolute',
-            bottom: '0px',
-            height: '200px',
-            backgroundColor: '#1b1a20',
-            width: '100%'
-          }}
-          item
-          xs={12}>
-          <Box p={4}>
-            <Grid container>
-              <Grid item xs={6} style={{color: '#5b5a5e', lineHeight: '1.5'}}>
-                SUBTOTAL
-              </Grid>
-              <Grid item xs={6} style={{textAlign: "right", fontSize: '22px', color: '#eabf00'}}>
-                $ {Object.values(products).reduce((a, c) => a+(c.price*c.count), 0).toFixed(2)}
-              </Grid>
-              <Grid item xs={12}>
-                <button className="checkout-button" style={{textAlign: "center"}}>
-                  checkout
-                </button>
-              </Grid>
+            <Grid
+              style={{
+                color: 'white',
+                position: 'absolute',
+                bottom: '0px',
+                height: '200px',
+                backgroundColor: '#1b1a20',
+                width: '100%',
+                zIndex: 2
+              }}
+              item
+              xs={12}>
+              <Box p={4}>
+                <Grid container>
+                  <Grid item xs={6} style={{color: '#5b5a5e', lineHeight: '1.5'}}>
+                    SUBTOTAL
+                  </Grid>
+                  <Grid item xs={6} style={{textAlign: "right", fontSize: '22px', color: '#eabf00'}}>
+                    $ {Object.values(products).reduce((a, c) => a+(c.price*c.count), 0).toFixed(2)}
+                  </Grid>
+                  <Grid item xs={12}>
+                    <button className="checkout-button" style={{textAlign: "center"}}>
+                      checkout
+                    </button>
+                  </Grid>
+                </Grid>
+              </Box>
             </Grid>
-          </Box>
         </Grid>
       </Grid>
     </Grid>
   )
 }
 
-const OpenCart = ({state, setState, productCount}) => {
-  let products = useGetProductsContext();
+const OpenCart = ({state, setState, productCount, products}) => {
+  console.log('products :', products);
   return (
     <Drawer 
       anchor="right" 
@@ -98,7 +100,7 @@ const OpenCart = ({state, setState, productCount}) => {
           backgroundColor: '#1b1a20'
         }
       }}>
-      {getDrawerContent(productCount, Object.values(products).sort((a, b) => a.insertionId<b.insertionId), setState)}
+      {getDrawerContent(productCount, Object.values(products).sort((a, b) => a.insertionId>b.insertionId ? 1 : -1), setState)}
     </Drawer>
   );
 }
