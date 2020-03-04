@@ -2,13 +2,8 @@ import React from 'react';
 import products from './data/products.json';
 import { Grid } from '@material-ui/core';
 import Product from './Product';
-import productsWebWorker from './ProductsWebWorker';
-import webWorkerSetup from './WebWorkerSteup'
 
 let productHash = {};
-//create a service worker to execute this task
-// let productWorker = new Worker('../ProductsWebWorker.js');
-// productWorker.postMessage(products); 
 products.products.forEach(product => {
   product.availableSizes.forEach((size) => {
     product.count = 0;
@@ -16,20 +11,6 @@ products.products.forEach(product => {
   })
 })
 
-let worker = new webWorkerSetup(productsWebWorker);
-
-worker.postMessage(products);
-
-
-// productWorker.onmessage((hashOfProducts) => {
-//   productHash = hashOfProducts;
-// })
-
-// productWorker.addEventListener('message', (d) => {
-//   productHash = d;
-// })
-
-//create a service worker to execute this task
 function getProducts(size, filter, setOpenCart){
   let pros = {};
   for(let item in size){
