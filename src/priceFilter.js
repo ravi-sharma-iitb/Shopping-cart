@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Grid, MenuItem } from '@material-ui/core';
+import React from 'react'
+import { Grid } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
 
 const PriceFilter = ({filter, setFilter}) => {

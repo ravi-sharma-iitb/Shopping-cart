@@ -8,7 +8,7 @@ const modifyItemQuantity = (products, product, incrementProduct) => {
   if(incrementProduct){
     tempProducts[product.id].count++;
   }else{
-    if(tempProducts[product.id].count != 1){
+    if(tempProducts[product.id].count !== 1){
       tempProducts[product.id].count--;
     }
   }

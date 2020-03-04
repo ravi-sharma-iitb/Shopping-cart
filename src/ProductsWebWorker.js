@@ -1,6 +1,6 @@
 // this.onmessage((products) => {
 // })
-export default () => {
+export default function() {
   this.addEventListener('message', (products) => {
     console.log("in product web worker")
     let productHash = {};

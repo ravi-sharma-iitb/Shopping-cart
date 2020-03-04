@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import { useGetProductsContext } from '../ShoppingCartContext';
 import { Grid } from '@material-ui/core';
 import OpenCart from './OpenCart';

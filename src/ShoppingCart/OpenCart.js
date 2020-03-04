@@ -2,7 +2,6 @@ import React from 'react'
 import Drawer from '@material-ui/core/Drawer';
 import { Grid, Box } from '@material-ui/core';
 import './ShoppingCart.css';
-import { useGetProductsContext } from '../ShoppingCartContext';
 import CartItem from './CartItem/CartItem';
 
 //see how to use useStyle in material ui
@@ -28,7 +27,7 @@ const getDrawerContent = (productCount, products, setState) => {
   return (
     <Grid container>
       <Grid item xs={12} className="shopping-cart">
-        <Grid container id="product-list" id="cart" style={{overflowY: 'scroll', height: window.outerHeight}}>
+        <Grid container id="cart" style={{overflowY: 'scroll', height: window.outerHeight}}>
             <Grid
               item
               className="close-button"

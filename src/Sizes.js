@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Grid, Typography, Box } from '@material-ui/core';
 import SizeEle from './SizeEle';
 import  './Sizes.css';

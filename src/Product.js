@@ -1,5 +1,5 @@
-import React, { Component, useRef } from 'react';
-import { Grid, Typography, Box, Button, Divider } from '@material-ui/core';
+import React, { useRef } from 'react';
+import { Grid, Typography, Box, Button,  } from '@material-ui/core';
 import './Product.css';
 import { useSelectedProductContext } from './ShoppingCartContext';
 

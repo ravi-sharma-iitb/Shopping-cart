@@ -5,7 +5,7 @@ const GetProductsContext = createContext();
 
 function useSelectedProductContext(){
   let context = useContext(SelectProductContext);
-  if(context == undefined){
+  if(context === undefined){
     throw new Error('useSelectedProductContext must be used inside ShoppingCartContext')
   }
   return context;
@@ -13,7 +13,7 @@ function useSelectedProductContext(){
 
 function useGetProductsContext(){
   let context = useContext(GetProductsContext);
-  if(context == undefined){
+  if(context === undefined){
     throw new Error('useGetProductsContext must be used inside ShoppingCartContext')
   }
   return context;

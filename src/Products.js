@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import products from './data/products.json';
-import { Grid, Box } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Product from './Product';
 import productsWebWorker from './ProductsWebWorker';
 import webWorkerSetup from './WebWorkerSteup'
@@ -16,9 +16,9 @@ products.products.forEach(product => {
   })
 })
 
-// let worker = new webWorkerSetup(productsWebWorker);
+let worker = new webWorkerSetup(productsWebWorker);
 
-// worker.postMessage(products);
+worker.postMessage(products);
 
 
 // productWorker.onmessage((hashOfProducts) => {
@@ -37,7 +37,7 @@ function getProducts(size, filter, setOpenCart){
       pros[ele.id]=ele;
     })
   }
-  if(Object.keys(size).length==0){
+  if(Object.keys(size).length===0){
     Object.values(productHash).forEach((product)=> {
       product.reduce((a, c) => {
         a[c.id]=c;
@@ -47,9 +47,9 @@ function getProducts(size, filter, setOpenCart){
   }
 
   let products = Object.values(pros).map((ele) => ele);
-  if(filter == 'increase'){
+  if(filter === 'increase'){
     products.sort((a, b) => a.price<b.price ? -1 : 0)
-  }else if(filter == 'decrease'){
+  }else if(filter === 'decrease'){
     products.sort((a, b) => a.price>b.price ? -1 : 0)
   }
   return products.map((product) => (

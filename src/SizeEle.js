@@ -9,7 +9,7 @@ const SizeEle = ({size, setSize}) => {
         item
         onClick={() => {
           setColor(preVal => {
-            if(preVal == '#ececec'){
+            if(preVal === '#ececec'){
               preVal = '#1b1a20';
             }else{
               preVal = '#ececec';
@@ -17,7 +17,7 @@ const SizeEle = ({size, setSize}) => {
             return preVal;
           })
           setSize(prevSizes => {
-            if(prevSizes[size]==1){
+            if(prevSizes[size]===1){
               delete prevSizes[size];
               return {...prevSizes};
             }
