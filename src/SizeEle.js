@@ -24,15 +24,13 @@ const SizeEle = ({size, setSize}) => {
             return {...prevSizes, [size]: 1}
           })
         }}>
-        {/* <Grid container> */}
-          <Grid
-            className="size-ele"
-            style={{backgroundColor: backgroundColor}}>
-            <Typography variant="caption">
-              {size}
-            </Typography>
-          </Grid>
-        {/* </Grid> */}
+        <Grid
+          className="size-ele"
+          style={{backgroundColor: backgroundColor}}>
+          <Typography variant="caption">
+            {size}
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );

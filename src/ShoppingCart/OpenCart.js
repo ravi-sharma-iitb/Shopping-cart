@@ -23,7 +23,6 @@ let quantityStyle = {
 }
 
 const getDrawerContent = (productCount, products, setState) => {
-  products.forEach((product) => console.log(product.insertionId))
   return (
     <Grid container>
       <Grid item xs={12} className="shopping-cart">
@@ -86,7 +85,6 @@ const getDrawerContent = (productCount, products, setState) => {
 }
 
 const OpenCart = ({state, setState, productCount, products}) => {
-  console.log('products :', products);
   return (
     <Drawer 
       anchor="right" 

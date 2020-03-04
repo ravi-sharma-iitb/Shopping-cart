@@ -3,7 +3,6 @@ import { Grid } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
 
 const PriceFilter = ({filter, setFilter}) => {
-  console.log('price filter renderig');
   return (
     <Grid container>
       <Grid item xs={12} style={{textAlign: "right"}}>

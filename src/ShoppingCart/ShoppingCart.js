@@ -6,8 +6,6 @@ import CloseCart from './CloseCart';
 
 const ShoppingCart = ({open, setOpenCart}) => {
   let products = useGetProductsContext();
-  console.log('products :', products);
-  console.log('products :', products);
   let productCount = Object.values(products).reduce((a, c) => a+c.count, 0);
   return (
     <Grid>
