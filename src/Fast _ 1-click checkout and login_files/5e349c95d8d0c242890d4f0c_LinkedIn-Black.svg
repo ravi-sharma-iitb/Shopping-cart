@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none"><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/>
+
+
+<defs>
+<clipPath id="clip0">
+<rect x="10.5" y="10.5" width="21" height="21" fill="white" id="svg_1"/>
+</clipPath>
+<clipPath id="clip1">
+<rect x="11.8125" y="10.5" width="18.375" height="21" fill="white" id="svg_2"/>
+</clipPath>
+</defs>
+<g class="currentLayer" style=""><title>Layer 1</title><circle cx="21" cy="21" r="21" fill="#ff5a5f" id="svg_3" class="" fill-opacity="1"/><g clip-path="url(#clip0)" id="svg_4" class="">
+<g clip-path="url(#clip1)" id="svg_5">
+<path d="M15.9255 28.8751H12.116V16.6074H15.9255V28.8751ZM14.0187 14.9339C12.8006 14.9339 11.8125 13.9249 11.8125 12.7068C11.8125 12.1217 12.0449 11.5605 12.4587 11.1467C12.8724 10.733 13.4336 10.5005 14.0187 10.5005C14.6039 10.5005 15.165 10.733 15.5788 11.1467C15.9925 11.5605 16.225 12.1217 16.225 12.7068C16.225 13.9249 15.2365 14.9339 14.0187 14.9339ZM30.1834 28.8751H26.3821V22.9033C26.3821 21.48 26.3534 19.6548 24.4014 19.6548C22.4208 19.6548 22.1173 21.2011 22.1173 22.8007V28.8751H18.3118V16.6074H21.9655V18.2808H22.0188C22.5274 17.3169 23.7698 16.2997 25.6233 16.2997C29.4788 16.2997 30.1875 18.8386 30.1875 22.1363V28.8751H30.1834Z" fill="white" id="svg_6"/>
+</g>
+</g></g></svg>
