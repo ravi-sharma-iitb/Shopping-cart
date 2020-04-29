@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link, Redirect, useParams } from "react-router-dom";
-import axios from "axios";
+import {api} from './api';
 
 function Copyright() {
   return (
@@ -67,7 +67,7 @@ export default function SignIn({ login }) {
   const handleSubmit = async e => {
     e.preventDefault();
     e.persist();
-    let response = await axios.post("http://localhost:5000/register", {
+    let response = await api.post("/register", {
       email,
       phone,
       address,
@@ -86,7 +86,7 @@ export default function SignIn({ login }) {
 
   useEffect(() => {
     async function verification() {
-      let response = await axios.get("http://localhost:5000/verify");
+      let response = await api.get("/verify");
       if (response.data.done) {
         setVerify(true);
       }

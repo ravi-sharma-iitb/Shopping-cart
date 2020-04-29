@@ -143,7 +143,7 @@ function HomePage() {
       >
         <a
           style={{ color: "white", textDecoration: "none" }}
-          href="http://shop.letsdooit.com/"
+          href="http://shop.letsdooit.in/"
         >
           Go To Merchant Site For Demo
         </a>

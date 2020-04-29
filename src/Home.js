@@ -82,7 +82,7 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
     if (response.data.done) {
       window.location =
         response.data.transaction.redirectUrl +
-        `/?name=${user.firstname}&address=${user.address}&phone=${user.phone}&email=${user.email}`;
+        `?name=${user.firstname}&address=${user.address}&phone=${user.phone}&email=${user.email}`;
     }
   }
 
