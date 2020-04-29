@@ -68,7 +68,7 @@ export default function Login({ setLogin, login, location, setUser }) {
     e.preventDefault();
     e.persist();
     let response = await api.post(
-      `http://localhost:5000/${location.state.route}`,
+      `/${location.state.route}`,
       {
         phone: location.state.phone,
         otp
@@ -90,7 +90,7 @@ export default function Login({ setLogin, login, location, setUser }) {
     return (
       <Redirect
         to={{
-          pathname: `/${id}`,
+          pathname: `/home/${id}`,
           state: {
             // user
           }

@@ -63,7 +63,7 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
   useEffect(() => {
     async function getTransaction() {
       if (id) {
-        let response = await api.get(`http://localhost:5000/transaction/${id}`);
+        let response = await api.get(`/transaction/${id}`);
         setTransaction(() => response.data.transaction);
       }
     }
@@ -71,12 +71,12 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
   }, []);
 
   async function logout() {
-    await api.post("http://localhost:5000/logout", {});
+    await api.post("/logout", {});
     setLogin(false);
   }
 
   async function checkout() {
-    let response = await api.post("http://localhost:5000/checkout", {
+    let response = await api.post("/checkout", {
       transactionId: id
     });
     if (response.data.done) {
@@ -88,7 +88,7 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
 
   if (!login) {
     console.log("login :>> ", login);
-    return <Redirect to={`/login/${id}`} />;
+    return <Redirect to={`/${id}`} />;
   }
   return (
     <div>

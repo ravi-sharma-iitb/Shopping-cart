@@ -109,7 +109,7 @@ export default function SignIn({ login }) {
   }
 
   if (login || verify) {
-    return <Redirect to={`/${id}`} />;
+    return <Redirect to={`/home/${id}`} />;
   }
 
   return (

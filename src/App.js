@@ -10,7 +10,7 @@ import Otp from "./Otp";
 import { api } from "./api";
 import { Redirect } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
-import HomePage from './HomePage';
+import HomePage from "./HomePage";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     setLoading(true);
     async function verify() {
-      let response = await api.get("http://localhost:5000/verify");
+      let response = await api.get("/verify");
       console.log("response :>> ", response);
       if (response.data.verify) {
         console.log("here");
@@ -59,13 +59,6 @@ function App() {
           )}
         />
         <Route
-          path="/homePage"
-          exact
-          render={proppropsHistory => (
-            <HomePage setLogin={setLogin} login={login} />
-          )}
-        />
-        <Route
           path="/otp/:id?"
           exact
           render={proppropsHistory => (
@@ -85,10 +78,18 @@ function App() {
           )}
         />
         <Route
-          path="/:id?"
+          path="/home/:id?"
           exact
           render={proppropsHistory => (
             <Home login={login} verifiedUser={user} setLogin={setLogin} />
+          )}
+        />
+
+        <Route
+          path="/:id?"
+          exact
+          render={proppropsHistory => (
+            <HomePage setLogin={setLogin} login={login} />
           )}
         />
       </Switch>

@@ -65,7 +65,7 @@ export default function Login({ setLogin, login }) {
       setMessage("Enter Correct Phone Number");
       return;
     }
-    let response = await api.post("http://localhost:5000/login-otp", {
+    let response = await api.post("/login-otp", {
       phone: phone.trim()
     });
     console.log("response :>> ", response);
@@ -90,7 +90,7 @@ export default function Login({ setLogin, login }) {
   }
 
   if (login) {
-    return <Redirect to={`/${id}`} />;
+    return <Redirect to={`/home/${id}`} />;
   }
 
   return (
