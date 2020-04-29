@@ -86,6 +86,10 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
     }
   }
 
+  if(id==""){
+    return <Redirect to="/dashboard" /> 
+  }
+
   if (!login) {
     console.log("login :>> ", login);
     return <Redirect to={`/${id}`} />;

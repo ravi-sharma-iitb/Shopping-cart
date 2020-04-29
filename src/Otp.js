@@ -67,13 +67,10 @@ export default function Login({ setLogin, login, location, setUser }) {
   const handleSubmit = async e => {
     e.preventDefault();
     e.persist();
-    let response = await api.post(
-      `/${location.state.route}`,
-      {
-        phone: location.state.phone,
-        otp
-      }
-    );
+    let response = await api.post(`/${location.state.route}`, {
+      phone: location.state.phone,
+      otp
+    });
     console.log("response :>> ", response);
     if (response.data.verified) {
       setUser(() => ({ ...response.data.user }));
@@ -103,9 +100,19 @@ export default function Login({ setLogin, login, location, setUser }) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          OTP
-        </Typography>
+        <Grid container>
+          <Typography
+            component="h1"
+            variant="h5"
+            style={{ marginRight: "auto", color: "#FF5A5F" }}
+          >
+            OTP
+          </Typography>
+          <img
+            src={require("./Fast _ 1-click checkout and login_files/5e349c95d8d0c2eb3c0d4edc_Fast-LogoBlack.svg")}
+            alt=""
+          />
+        </Grid>
         <form
           className={classes.form}
           onSubmit={handleSubmit}
@@ -114,7 +121,7 @@ export default function Login({ setLogin, login, location, setUser }) {
         >
           <TextField
             variant="outlined"
-            margin="normal"
+            margin="dense"
             required
             fullWidth
             id="otp"
@@ -122,6 +129,7 @@ export default function Login({ setLogin, login, location, setUser }) {
             name="otp"
             autoComplete="otp"
             value={otp}
+            color="secondary"
             onChange={e => setOtp(e.target.value)}
             autoFocus
           />
@@ -130,6 +138,7 @@ export default function Login({ setLogin, login, location, setUser }) {
             fullWidth
             variant="contained"
             color="primary"
+            style={{ backgroundColor: "#FF5A5F", color: "white" }}
             className={classes.submit}
           >
             Submit Otp
@@ -141,7 +150,7 @@ export default function Login({ setLogin, login, location, setUser }) {
               </Link>
             </Grid>
           </Grid> */}
-          <Grid container>
+          <Grid container style={{ color: "#FF5A5F" }}>
             <Grid item>{message}</Grid>
           </Grid>
         </form>

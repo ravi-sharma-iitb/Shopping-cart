@@ -11,6 +11,7 @@ import { api } from "./api";
 import { Redirect } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
 import HomePage from "./HomePage";
+import Dashboard from "./Dashboard";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -75,6 +76,13 @@ function App() {
           exact
           render={proppropsHistory => (
             <Signup setLogin={setLogin} login={login} />
+          )}
+        />
+        <Route
+          path="/dashboard/:id?"
+          exact
+          render={proppropsHistory => (
+            <Dashboard setLogin={setLogin} login={login} />
           )}
         />
         <Route

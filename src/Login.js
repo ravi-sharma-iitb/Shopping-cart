@@ -97,13 +97,23 @@ export default function Login({ setLogin, login }) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Login
-        </Typography>
+        <Grid container>
+          <Typography
+            component="h1"
+            variant="h5"
+            style={{ marginRight: "auto", color: "#FF5A5F" }}
+          >
+            Login
+          </Typography>
+          <img
+            src={require("./Fast _ 1-click checkout and login_files/5e349c95d8d0c2eb3c0d4edc_Fast-LogoBlack.svg")}
+            alt=""
+          />
+        </Grid>
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <TextField
             variant="outlined"
-            margin="normal"
+            margin="dense"
             required
             fullWidth
             id="phone"
@@ -112,25 +122,26 @@ export default function Login({ setLogin, login }) {
             autoComplete="phone"
             value={phone}
             onChange={e => setPhone(e.target.value)}
+            color="secondary"
             autoFocus
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            style={{ backgroundColor: "#FF5A5F", color: "white" }}
             className={classes.submit}
           >
             Request Otp
           </Button>
           <Grid container>
             <Grid item>
-              <Link to="/signup" variant="body2">
+              <Link to="/signup" variant="body2" style={{ color: "FF5A5F" }}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
-          <Grid container>
+          <Grid container style={{ color: "#FF5A5F" }}>
             <Grid item>{message}</Grid>
           </Grid>
         </form>

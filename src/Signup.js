@@ -12,7 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link, Redirect, useParams } from "react-router-dom";
-import {api} from './api';
+import { api } from "./api";
+import Divider from "@material-ui/core/Divider";
 
 function Copyright() {
   return (
@@ -116,13 +117,24 @@ export default function SignIn({ login }) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Signup
-        </Typography>
+        <Grid container>
+          <Typography
+            component="h1"
+            variant="h5"
+            style={{ marginRight: "auto", color: "#FF5A5F" }}
+          >
+            Signup
+          </Typography>
+          <img
+            src={require("./Fast _ 1-click checkout and login_files/5e349c95d8d0c2eb3c0d4edc_Fast-LogoBlack.svg")}
+            alt=""
+          />
+        </Grid>
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <TextField
             variant="outlined"
-            margin="normal"
+            color="secondary"
+            margin="dense"
             required
             fullWidth
             id="email"
@@ -135,7 +147,8 @@ export default function SignIn({ login }) {
           />
           <TextField
             variant="outlined"
-            margin="normal"
+            margin="dense"
+            color="secondary"
             required
             fullWidth
             name="phone"
@@ -148,7 +161,8 @@ export default function SignIn({ login }) {
           />
           <TextField
             variant="outlined"
-            margin="normal"
+            margin="dense"
+            color="secondary"
             required
             fullWidth
             name="address"
@@ -160,10 +174,11 @@ export default function SignIn({ login }) {
             autoComplete="current-password"
           />
           <Grid container justify="space-between">
-            <Grid item xs={5}>
+            <Grid item xs={6} style={{ paddingRight: "5px" }}>
               <TextField
                 variant="outlined"
-                margin="normal"
+                margin="dense"
+                color="secondary"
                 required
                 // fullWidth
                 name="firstname"
@@ -175,10 +190,11 @@ export default function SignIn({ login }) {
                 autoComplete="current-password"
               />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={6} style={{ paddingLeft: "2px" }}>
               <TextField
                 variant="outlined"
-                margin="normal"
+                margin="dense"
+                color="secondary"
                 required
                 // fullWidth
                 name="lastname"
@@ -191,66 +207,75 @@ export default function SignIn({ login }) {
               />
             </Grid>
           </Grid>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="cardNumber"
-            label="Card Number"
-            type="cardNumber"
-            id="cardNumber"
-            value={cardNumber}
-            onChange={e => setCardNumber(e.target.value)}
-            autoComplete="current-password"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="exp"
-            label="Exp"
-            type="exp"
-            id="exp"
-            value={exp}
-            onChange={e => setExp(e.target.value)}
-            autoComplete="current-password"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="cvv"
-            label="Cvv"
-            type="cvv"
-            id="cvv"
-            value={cvv}
-            onChange={e => setCvv(e.target.value)}
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+          <Divider style={{ marginTop: "20px", marginBottom: "20px" }} />
+          <Grid container>
+            <Grid item xs={4}>
+              <TextField
+                variant="outlined"
+                margin="dense"
+                required
+                color="secondary"
+                fullWidth
+                name="cardNumber"
+                label="Card Number"
+                type="cardNumber"
+                id="cardNumber"
+                value={cardNumber}
+                onChange={e => setCardNumber(e.target.value)}
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                variant="outlined"
+                margin="dense"
+                required
+                color="secondary"
+                fullWidth
+                name="exp"
+                label="Exp"
+                type="exp"
+                id="exp"
+                value={exp}
+                onChange={e => setExp(e.target.value)}
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                variant="outlined"
+                margin="dense"
+                required
+                color="secondary"
+                fullWidth
+                name="cvv"
+                label="Cvv"
+                type="cvv"
+                id="cvv"
+                value={cvv}
+                onChange={e => setCvv(e.target.value)}
+                autoComplete="current-password"
+              />
+            </Grid>
+          </Grid>
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            style={{ backgroundColor: "#FF5A5F", color: "white" }}
             className={classes.submit}
           >
             Request Otp
           </Button>
           <Grid container>
             <Grid item>
-              <Link to="login" variant="body2">
+              <Link to="/login"  style={{ color: "#FF5A5F" }}>
                 {"Have an account? Login"}
               </Link>
             </Grid>
           </Grid>
-          <Grid container>
+          <Grid container style={{ color: "#FF5A5F" }}>
             <Grid item>{message}</Grid>
           </Grid>
         </form>
