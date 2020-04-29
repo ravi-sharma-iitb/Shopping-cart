@@ -4,7 +4,14 @@ import { Redirect, useParams } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { Grid, Box } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  TextField,
+  Container,
+  CssBaseline,
+  Divider
+} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 
@@ -86,8 +93,8 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
     }
   }
 
-  if(id==""){
-    return <Redirect to="/dashboard" /> 
+  if (id == "") {
+    return <Redirect to="/dashboard" />;
   }
 
   if (!login) {
@@ -96,35 +103,201 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
   }
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="static" style={{backgroundColor: "#fff"}}>
         <Toolbar>
-          <Typography variant="h6">Close</Typography>
-          <Button
+          <img
+            src={require("./Fast _ 1-click checkout and login_files/5e349c95d8d0c2eb3c0d4edc_Fast-LogoBlack.svg")}
+            alt=""
+          />
+          {/* <Button
             variant="contained"
             color="secondary"
             style={{ marginLeft: "auto" }}
             onClick={() => logout()}
           >
             Logout
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
-      <Grid container>
-        <Grid item xs={12}></Grid>
-      </Grid>
-      <Details title="Email" value={user.email} />
-      <Grid container>
-        <Grid item xs={4} style={{ marginRight: "70px" }}>
-          <Details title="Firstname" value={user.firstname} />
-        </Grid>
-        <Grid item xs={4}>
-          <Details title="Lastname" value={user.lastname} />
-        </Grid>
-      </Grid>
-      <Details title="Phone" value={user.phone} />
-      <Details title="Address" value={user.address} />
-      <Details title="Card Number" value={user.cardNumber} />
-      {id && !transaction.completed ? (
+
+      <Container component="main" maxWidth="xs" style={{ marginTop: "75px" }}>
+        <CssBaseline />
+        <div>
+          <Grid container>
+            <Typography
+              component="h1"
+              variant="h5"
+              style={{ marginRight: "auto", color: "#FF5A5F" }}
+            >
+              Checkout
+            </Typography>
+            <img
+              src={require("./Fast _ 1-click checkout and login_files/5e349c95d8d0c2eb3c0d4edc_Fast-LogoBlack.svg")}
+              alt=""
+            />
+          </Grid>
+          <form noValidate>
+            <TextField
+              variant="outlined"
+              color="secondary"
+              margin="dense"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              value={user.email}
+              autoFocus
+              disabled
+            />
+            <TextField
+              variant="outlined"
+              margin="dense"
+              color="secondary"
+              required
+              fullWidth
+              name="phone"
+              label="Phone"
+              type="phone"
+              id="phone"
+              value={user.phone}
+              autoComplete="current-password"
+              disabled
+            />
+            <TextField
+              variant="outlined"
+              margin="dense"
+              color="secondary"
+              required
+              fullWidth
+              name="address"
+              label="Address"
+              type="address"
+              id="address"
+              value={user.address}
+              autoComplete="current-password"
+              disabled
+            />
+            <Grid container justify="space-between">
+              <Grid item xs={6} style={{ paddingRight: "5px" }}>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  color="secondary"
+                  required
+                  // fullWidth
+                  name="firstname"
+                  label="Firstname"
+                  type="firstname"
+                  id="firstname"
+                  value={user.firstname}
+                  autoComplete="current-password"
+                  disabled
+                />
+              </Grid>
+              <Grid item xs={6} style={{ paddingLeft: "2px" }}>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  color="secondary"
+                  required
+                  // fullWidth
+                  name="lastname"
+                  label="Lastname"
+                  type="lastname"
+                  id="lastname"
+                  value={user.lastname}
+                  autoComplete="current-password"
+                  disabled
+                />
+              </Grid>
+            </Grid>
+            <Divider style={{ marginTop: "20px", marginBottom: "20px" }} />
+            <Grid container>
+              <Grid item xs={4}>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  required
+                  color="secondary"
+                  fullWidth
+                  name="cardNumber"
+                  label="Card Number"
+                  type="cardNumber"
+                  id="cardNumber"
+                  value={user.cardNumber}
+                  autoComplete="current-password"
+                  disabled
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  required
+                  color="secondary"
+                  fullWidth
+                  name="exp"
+                  label="Exp"
+                  type="exp"
+                  id="exp"
+                  value={user.exp}
+                  autoComplete="current-password"
+                  disabled
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  required
+                  color="secondary"
+                  fullWidth
+                  name="cvv"
+                  label="Cvv"
+                  type="cvv"
+                  id="cvv"
+                  value={user.cvv}
+                  autoComplete="current-password"
+                  disabled
+                />
+              </Grid>
+            </Grid>
+            {id && !transaction.completed ? (
+              <TextField
+                variant="outlined"
+                margin="dense"
+                color="secondary"
+                required
+                fullWidth
+                name="address"
+                label="Payment"
+                type="address"
+                id="address"
+                value={transaction.price}
+                autoComplete="current-password"
+                disabled
+              />
+            ) : (
+              ""
+            )}
+            {id && !transaction.completed ? (
+              <Button
+                fullWidth
+                variant="contained"
+                style={{ backgroundColor: "#FF5A5F", color: "white" }}
+                onClick={() => checkout()}
+              >
+                Checkout
+              </Button>
+            ) : (
+              ""
+            )}
+          </form>
+        </div>
+      </Container>
+      {/* {id && !transaction.completed ? (
         <>
           <Typography variant="h5" style={{ marginTop: "15px" }}>
             Payment: {transaction.price}
@@ -141,7 +314,7 @@ const Home = ({ login, setLogin, verifiedUser, location }) => {
         </>
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 };

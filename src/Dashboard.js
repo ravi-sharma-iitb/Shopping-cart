@@ -51,7 +51,7 @@ function Dashboard({login}) {
                 padding: "20px"
               }}
             >
-              Buy Close Swag
+              Buy On Lets Do It
             </Button>
           </a>
         </Grid>
